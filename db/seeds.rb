@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Create Employees
+employee_list = ['joostva', 'koenp', 'leenc', 'wimlz', 'woutercd', 'bartr', 'lievendf', 'lievenca', 'jans', 'yvesvw']
+employee_list.each do |employee_name|
+  Employee.create(name: employee_name)
+end
+
+20.times do
+
+end

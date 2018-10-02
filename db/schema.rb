@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_183858) do
+ActiveRecord::Schema.define(version: 2018_10_02_050934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,25 @@ ActiveRecord::Schema.define(version: 2018_10_01_183858) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_id"
   end
 
   create_table "cards", force: :cascade do |t|
     t.string "title"
     t.string "subtitle"
     t.text "content"
+    t.integer "status"
     t.integer "lane_id"
+    t.integer "employee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.binary "avatar"
+    t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,6 +45,12 @@ ActiveRecord::Schema.define(version: 2018_10_01_183858) do
   create_table "lanes", force: :cascade do |t|
     t.string "title"
     t.integer "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
