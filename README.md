@@ -26,6 +26,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Project Details
+Project is inspired by web post Build a [RESTful JSON API With Rails 5](https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one)
+
+
 
 
