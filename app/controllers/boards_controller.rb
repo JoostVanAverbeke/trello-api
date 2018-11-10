@@ -1,6 +1,11 @@
 class BoardsController < ApplicationController
+  before_action :set_team, only: :index
   def index
-    render json: Board.all
+    if @team
+      render json: @team.boards
+    else
+      render json: Board.all
+    end
   end
 
   def show
@@ -22,4 +27,11 @@ class BoardsController < ApplicationController
         team: { only: [ :name] }
     ])
   end
+
+  private
+
+  def set_team
+    @team = Team.find(params[:team_id]) if params[:team_id]
+  end
+
 end
