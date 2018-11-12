@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
             include: {
               cards: {
                   include: {
-                    employee: { only: [ :last_name, :first_name] }
+                    employee: { only: [ :short_name, :last_name, :first_name] }
                 }
               }
           }
