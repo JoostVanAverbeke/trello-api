@@ -1,11 +1,8 @@
 class BoardsController < ApplicationController
   before_action :set_team, only: :index
   def index
-    if @team
-      render json: @team.boards
-    else
-      render json: Board.all
-    end
+    @boards = BoardsDatatable.new(@team, params)
+    render json: @boards
   end
 
   def show

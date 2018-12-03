@@ -28,8 +28,10 @@ gem 'rack-cors'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+# will_paginate provides a simple API for performing paginated queries with Active Record,
+# DataMapper and Sequel, and includes helpers for rendering pagination links in Rails,
+# Sinatra and Merb web apps.
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
