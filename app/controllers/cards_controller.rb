@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [ :show, :move ]
   def index
-    @cards = Card.all
-    json_response @cards
+    @cards = CardsDatatable.new(params)
+    render json: @cards
   end
 
   def show

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_084120) do
+ActiveRecord::Schema.define(version: 2019_01_26_173435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,21 @@ ActiveRecord::Schema.define(version: 2018_11_17_084120) do
     t.float "estimate"
   end
 
+  create_table "dashboard_cards", force: :cascade do |t|
+    t.string "title"
+    t.integer "dashboard_id"
+    t.string "component"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dashboards", force: :cascade do |t|
+    t.integer "employee_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
@@ -45,6 +60,15 @@ ActiveRecord::Schema.define(version: 2018_11_17_084120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "short_name"
+  end
+
+  create_table "function_parameters", force: :cascade do |t|
+    t.integer "dashboard_card_id"
+    t.string "parameter"
+    t.string "parameter_type"
+    t.string "parameter_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lanes", force: :cascade do |t|

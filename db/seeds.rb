@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+# This file should contain all the record creation needed to seed the database with its default parameter_values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -60,6 +60,10 @@ plex_employee_list.each do |employee|
   Employee.create(first_name: employee[:first_name], last_name: employee[:last_name], team_id: plex_team.id)
 end
 first_core_employee = core_team.employees.first
+first_case_employee = case_team.employees.first
+first_tars_employee = tars_team.employees.first
+first_plex_employee = plex_team.employees.first
+
 # Create Boards
 20.times do |counter|
   board = Board.create(title: "sprint #{counter}", team_id: core_team.id)
@@ -83,3 +87,18 @@ first_core_employee = core_team.employees.first
   end
 end
 # End Create Boards
+
+# Create dashboards for employees
+jva_dashboard = Dashboard.create(title: 'JVA Dashboard', employee_id: first_core_employee.id)
+jva_burndown_sprint5_card = DashboardCard.create(component: 'burndown', title: 'Burndown sprint 5', dashboard_id: jva_dashboard.id)
+FunctionParameter.create(parameter: 'board', parameter_type: 'integer', parameter_value: '5', dashboard_card_id: jva_burndown_sprint5_card.id)
+FunctionParameter.create(parameter: 'height', parameter_type: 'integer', parameter_value: '200', dashboard_card_id: jva_burndown_sprint5_card.id)
+
+
+jva_burndown_sprint3_card = DashboardCard.create(component: 'burndown', title: 'Burndown sprint 3', dashboard_id: jva_dashboard.id)
+FunctionParameter.create(parameter: 'board', parameter_type: 'integer', parameter_value: '3', dashboard_card_id: jva_burndown_sprint3_card.id)
+FunctionParameter.create(parameter: 'height', parameter_type: 'integer', parameter_value: '200', dashboard_card_id: jva_burndown_sprint3_card.id)
+
+jva_boardcard6 = DashboardCard.create(component: 'board-card', title: 'My favorite', dashboard_id: jva_dashboard.id)
+FunctionParameter.create(parameter: 'board', parameter_type: 'integer', parameter_value: '6', dashboard_card_id: jva_boardcard6.id)
+# End create dashboard cards for employee JVA (first CORE employee)

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :employees, only: [:index]
+  resources :dashboards, only: [:index]
+  get 'dashboards/:id/details', to: 'dashboards#details'
   resources :teams, only: [:index, :show] do
     resources :boards, only: [:index]
   end
